@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
 
 
 var data = [];
-for(var i = 0; i < 10; i++)
+for(var i = 0; i < 500; i++)
   {
     data.push([
     faker.internet.email(), 
