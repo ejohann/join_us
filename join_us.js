@@ -10,7 +10,10 @@ var connection = mysql.createConnection({
 
 // var q = 'SELECT COUNT(*) as total FROM users'
 
-var person = {email: faker.internet.email()};
+var person = {
+        email: faker.internet.email(),
+        created_at: faker.date.past()
+};
 
 connection.query('INSERT INTO users SET ?', person,  function(error, result)
  {
