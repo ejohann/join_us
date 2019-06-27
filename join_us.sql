@@ -23,3 +23,12 @@ SELECT DATE_FORMAT(created_at, '%M %D %Y')
 SELECT email, 
 		created_at
 		FROM users WHERE created_at = (SELECT created_at FROM users ORDER BY created_at ASC LIMIT 1);
+
+
+-- group users by the month they joined
+
+SELECT DATE_FORMAT(created_at, '%M')
+ 			AS month,
+ 			COUNT(*) AS count 
+ 			FROM users
+ 			GROUP BY month ORDER BY count DESC;
