@@ -10,6 +10,21 @@ var connection = mysql.createConnection({
 
 // var q = 'SELECT COUNT(*) as total FROM users'
 
+var person = {email: 'abigail976@gmail.com'};
+
+connection.query('INSERT INTO users SET ?', person,  function(error, result)
+ {
+  if(error)
+   {
+      throw error;
+   }
+  else
+   {
+      console.log(result);
+   }  
+});
+
+/*
 var q = 'INSERT INTO users (email) VALUES ("felix_the_cat@gmail.com")';
 
 connection.query(q, function(error, results, fields)
@@ -22,5 +37,5 @@ connection.query(q, function(error, results, fields)
    {
       console.log(results);
    }  
-});
+}); */
 connection.end();
