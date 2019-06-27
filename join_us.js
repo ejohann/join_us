@@ -12,11 +12,14 @@ var connection = mysql.createConnection({
 
 
 var data = [];
-
-data.push([
+for(var i = 0; i < 10; i++)
+  {
+    data.push([
     faker.internet.email(), 
     faker.date.past()
   ]);
+  }
+
 
 var q = 'INSERT INTO users (email, created_at) VALUES ? ';
 
