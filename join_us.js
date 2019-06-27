@@ -10,6 +10,29 @@ var connection = mysql.createConnection({
 
 // var q = 'SELECT COUNT(*) as total FROM users'
 
+
+var data = [
+      [faker.internet.email(), faker.date.past()],
+      [faker.internet.email(), faker.date.past()],
+      [faker.internet.email(), faker.date.past()]
+];
+
+
+var q = 'INSERT INTO users (email, created_at) VALUES ? ';
+
+connection.query(q, [data], function(error, results, fields)
+ {
+  if(error)
+   {
+      throw error;
+   }
+  else
+   {
+      console.log(results);
+   }  
+})
+
+/*
 var person = {
         email: faker.internet.email(),
         created_at: faker.date.past()
@@ -26,8 +49,9 @@ var end_result = connection.query('INSERT INTO users SET ?', person,  function(e
       console.log(result);
    }  
 });
+*/
 
-console.log(end_result.sql);
+//console.log(end_result.sql);
 
 /*
 var q = 'INSERT INTO users (email) VALUES ("felix_the_cat@gmail.com")';
