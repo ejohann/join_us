@@ -16,4 +16,5 @@ INSERT INTO users(email) VALUES ('katie34@yahoo.com'), ('tunde99@yahoo.com');
 SELECT DATE_FORMAT(created_at, '%M %D %Y')
 		AS earliest_date
 		FROM users
-		ORDER BY earliest_date DESC LIMIT 1;
+		ORDER BY created_at ASC LIMIT 1;
+
