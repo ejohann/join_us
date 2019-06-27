@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
   database : 'join_us'
 });
 
-var q = 'SELECT DAYNAME(CURDATE()) AS today, CURTIME() AS time, CURDATE() AS date'
+var q = 'SELECT * FROM users'
 connection.query(q, function(error, results, fields)
  {
   if(error)
@@ -17,9 +17,7 @@ connection.query(q, function(error, results, fields)
    }
   else
    {
-      console.log('Today is: ', results[0].today);
-      console.log('Time is: ', results[0].time);
-      console.log('Date is: ', results[0].date);
+      console.log(results);
    }  
 });
 connection.end();
