@@ -8,8 +8,6 @@ var connection = mysql.createConnection({
   database : 'join_us'
 });
 
-// var q = 'SELECT COUNT(*) as total FROM users'
-
 
 var data = [];
 for(var i = 0; i < 500; i++)
@@ -20,10 +18,9 @@ for(var i = 0; i < 500; i++)
   ]);
   }
 
-
 var q = 'INSERT INTO users (email, created_at) VALUES ? ';
 
-connection.query(q, [data], function(error, results, fields)
+connection.query(q, [data], function(error, results)
  {
   if(error)
    {
@@ -34,6 +31,17 @@ connection.query(q, [data], function(error, results, fields)
       console.log(results);
    }  
 })
+
+connection.end();
+
+
+
+
+
+
+
+
+// var q = 'SELECT COUNT(*) as total FROM users'
 
 /*
 var person = {
@@ -70,4 +78,3 @@ connection.query(q, function(error, results, fields)
       console.log(results);
    }  
 }); */
-connection.end();
