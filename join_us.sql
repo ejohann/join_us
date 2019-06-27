@@ -32,3 +32,12 @@ SELECT DATE_FORMAT(created_at, '%M')
  			COUNT(*) AS count 
  			FROM users
  			GROUP BY month ORDER BY count DESC;
+
+
+ -- count of number of users with yahoo emails 
+
+ SELECT COUNT(*)
+ 		AS yahoo_users
+ 		FROM users WHERE email = (SUBSTR(email FROM -9 FOR 9) != 'yahoo.com');
+
+
