@@ -41,3 +41,15 @@ SELECT DATE_FORMAT(created_at, '%M')
  		FROM users WHERE email = (SUBSTR(email FROM -9 FOR 9) != 'yahoo.com');
 
 
+-- count of number of users with each email host 
+
+ SELECT
+       CASE
+        WHEN SUBSTR(email, -9, 9) IN ('gmail.com') THEN 'gmail'
+ 		WHEN SUBSTR(email, -9, 9) IN ('yahoo.com') THEN 'yahoo'
+ 		WHEN SUBSTR(email, -11, 11) IN ('hotmail.com') THEN 'hotmail'
+ 		ELSE 'other'
+       END AS provider,
+       COUNT(*)
+ 		AS total_users
+ 		FROM users GROUP BY provider ORDER BY total_users DESC;
