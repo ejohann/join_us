@@ -11,12 +11,12 @@ var connection = mysql.createConnection({
 // var q = 'SELECT COUNT(*) as total FROM users'
 
 
-var data = [
-      [faker.internet.email(), faker.date.past()],
-      [faker.internet.email(), faker.date.past()],
-      [faker.internet.email(), faker.date.past()]
-];
+var data = [];
 
+data.push([
+    faker.internet.email(), 
+    faker.date.past()
+  ]);
 
 var q = 'INSERT INTO users (email, created_at) VALUES ? ';
 
