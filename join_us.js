@@ -15,7 +15,7 @@ var person = {
         created_at: faker.date.past()
 };
 
-connection.query('INSERT INTO users SET ?', person,  function(error, result)
+var end_result = connection.query('INSERT INTO users SET ?', person,  function(error, result)
  {
   if(error)
    {
@@ -26,6 +26,8 @@ connection.query('INSERT INTO users SET ?', person,  function(error, result)
       console.log(result);
    }  
 });
+
+console.log(end_result.sql);
 
 /*
 var q = 'INSERT INTO users (email) VALUES ("felix_the_cat@gmail.com")';
