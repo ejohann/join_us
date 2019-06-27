@@ -17,7 +17,9 @@ connection.query(q, function(error, results, fields)
    }
   else
    {
-      console.log('Today is: ', results[0]);
+      console.log('Today is: ', results[0].today);
+      console.log('Time is: ', results[0].time);
+      console.log('Date is: ', results[0].date);
    }  
 });
 connection.end();
