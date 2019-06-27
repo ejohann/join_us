@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
   database : 'join_us'
 });
 
-var q = 'SELECT * FROM users'
+var q = 'SELECT COUNT(*) as total FROM users'
 connection.query(q, function(error, results, fields)
  {
   if(error)
@@ -17,7 +17,7 @@ connection.query(q, function(error, results, fields)
    }
   else
    {
-      console.log(results);
+      console.log(results[0].total);
    }  
 });
 connection.end();
