@@ -18,3 +18,8 @@ SELECT DATE_FORMAT(created_at, '%M %D %Y')
 		FROM users
 		ORDER BY created_at ASC LIMIT 1;
 
+-- Find Email of the earliest user
+
+SELECT email, 
+		created_at
+		FROM users WHERE created_at = (SELECT created_at FROM users ORDER BY created_at ASC LIMIT 1);
