@@ -19,9 +19,9 @@ SELECT DATE_FORMAT(MIN(created_at), '%M %D %Y') AS earliest_date FROM users;
 
 -- Find Email of the earliest user
 
-SELECT email, 
-		created_at
-		FROM users WHERE created_at = (SELECT created_at FROM users ORDER BY created_at ASC LIMIT 1);
+SELECT email, created_at FROM users WHERE created_at = (SELECT created_at FROM users ORDER BY created_at ASC LIMIT 1);
+
+SELECT email, created_at FROM users WHERE created_at = (SELECT MIN(created_at) FROM users);
 
 
 -- group users by the month they joined
