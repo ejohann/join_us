@@ -24,29 +24,44 @@ SELECT email, created_at FROM users WHERE created_at = (SELECT created_at FROM u
 SELECT email, created_at FROM users WHERE created_at = (SELECT MIN(created_at) FROM users);
 
 
--- CHALLENGE 3 group users by the month they joined
+-- CHALLENGE 3 - group users by the month they joined
 
 SELECT DATE_FORMAT(created_at, '%M') AS month, COUNT(*) AS count FROM users GROUP BY month ORDER BY count DESC;
 
 SELECT MONTHNAME(created_at) AS month, COUNT(*) FROM users GROUP BY month ORDER BY count DESC;
 
 
- -- CHALLENGE 4 count of number of users with yahoo emails 
+ -- CHALLENGE 4 - count of number of users with yahoo emails 
 
  SELECT COUNT(*) AS yahoo_users FROM users WHERE email = (SUBSTR(email FROM -9 FOR 9) != 'yahoo.com');
 
- SELECT COUNT(*) AS yahoo_users FROM users WHERE email LIKE '%yahoo.com';
+ SELECT COUNT(*) AS yahoo_users FROM users WHERE email LIKE '%@yahoo.com';
 
 
--- count of number of users with each email host 
+-- CHALLENGE 5 - count of number of users with each email host 
 
- SELECT
-       CASE
-        WHEN SUBSTR(email, -9, 9) IN ('gmail.com') THEN 'gmail'
- 		WHEN SUBSTR(email, -9, 9) IN ('yahoo.com') THEN 'yahoo'
- 		WHEN SUBSTR(email, -11, 11) IN ('hotmail.com') THEN 'hotmail'
- 		ELSE 'other'
-       END AS provider,
-       COUNT(*)
- 		AS total_users
- 		FROM users GROUP BY provider ORDER BY total_users DESC;
+SELECT
+  CASE
+    WHEN SUBSTR(email, -9, 9) IN ('gmail.com') THEN 'gmail'
+    WHEN SUBSTR(email, -9, 9) IN ('yahoo.com') THEN 'yahoo'
+    WHEN SUBSTR(email, -11, 11) IN ('hotmail.com') THEN 'hotmail'
+    ELSE 'other'
+  END AS provider,
+  COUNT(*)
+  AS total_users
+FROM users
+GROUP BY provider
+ORDER BY total_users DESC;
+
+
+SELECT
+  CASE
+    WHEN email LIKE '%@gmail.com' THEN 'gmail'
+    WHEN email LIKE '%@yahoo.com' THEN 'yahoo'
+    WHEN email LIKE '%@hotmail.com' THEN 'hotmail'
+    ELSE 'other'
+  END AS provider,
+  COUNT(*) AS total_users
+FROM users
+GROUP BY provider
+ORDER BY total_users DESC;
