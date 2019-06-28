@@ -11,31 +11,31 @@ CREATE TABLE users(
 INSERT INTO users(email) VALUES ('katie34@yahoo.com'), ('tunde99@yahoo.com');
 
 
--- Earliest date a user has joined
+-- CHALLENGE 1 - Earliest date a user has joined
 
 SELECT DATE_FORMAT(created_at, '%M %D %Y') AS earliest_date FROM users ORDER BY created_at ASC LIMIT 1;
 
 SELECT DATE_FORMAT(MIN(created_at), '%M %D %Y') AS earliest_date FROM users;
 
--- Find Email of the earliest user
+-- CHALLENGE 2 - Find Email of the earliest user
 
 SELECT email, created_at FROM users WHERE created_at = (SELECT created_at FROM users ORDER BY created_at ASC LIMIT 1);
 
 SELECT email, created_at FROM users WHERE created_at = (SELECT MIN(created_at) FROM users);
 
 
--- group users by the month they joined
+-- CHALLENGE 3 group users by the month they joined
 
 SELECT DATE_FORMAT(created_at, '%M') AS month, COUNT(*) AS count FROM users GROUP BY month ORDER BY count DESC;
 
 SELECT MONTHNAME(created_at) AS month, COUNT(*) FROM users GROUP BY month ORDER BY count DESC;
 
 
- -- count of number of users with yahoo emails 
+ -- CHALLENGE 4 count of number of users with yahoo emails 
 
- SELECT COUNT(*)
- 		AS yahoo_users
- 		FROM users WHERE email = (SUBSTR(email FROM -9 FOR 9) != 'yahoo.com');
+ SELECT COUNT(*) AS yahoo_users FROM users WHERE email = (SUBSTR(email FROM -9 FOR 9) != 'yahoo.com');
+
+ SELECT COUNT(*) AS yahoo_users FROM users WHERE email LIKE '%yahoo.com';
 
 
 -- count of number of users with each email host 
