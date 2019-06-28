@@ -26,11 +26,9 @@ SELECT email, created_at FROM users WHERE created_at = (SELECT MIN(created_at) F
 
 -- group users by the month they joined
 
-SELECT DATE_FORMAT(created_at, '%M')
- 			AS month,
- 			COUNT(*) AS count 
- 			FROM users
- 			GROUP BY month ORDER BY count DESC;
+SELECT DATE_FORMAT(created_at, '%M') AS month, COUNT(*) AS count FROM users GROUP BY month ORDER BY count DESC;
+
+SELECT MONTHNAME(created_at) AS month, COUNT(*) FROM users GROUP BY month ORDER BY count DESC;
 
 
  -- count of number of users with yahoo emails 
