@@ -18,6 +18,8 @@ SELECT DATE_FORMAT(created_at, '%M %D %Y')
 		FROM users
 		ORDER BY created_at ASC LIMIT 1;
 
+SELECT DATE_FORMAT(MIN(created_at), '%M %D %Y') AS earliest_date FROM users LIMIT 1;
+
 -- Find Email of the earliest user
 
 SELECT email, 
