@@ -1,16 +1,12 @@
 var faker = require('faker');
 var mysql = require('mysql');
 
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'password123',
-  database : 'join_us'
-});
+var config = require('./config.js');
+var connection = mysql.createConnection(config.databaseOptions);
 
 
 var data = [];
-for(var i = 0; i < 500; i++)
+for(var i = 0; i < 5; i++)
   {
     data.push([
     faker.internet.email(), 
