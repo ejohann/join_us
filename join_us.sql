@@ -13,12 +13,9 @@ INSERT INTO users(email) VALUES ('katie34@yahoo.com'), ('tunde99@yahoo.com');
 
 -- Earliest date a user has joined
 
-SELECT DATE_FORMAT(created_at, '%M %D %Y')
-		AS earliest_date
-		FROM users
-		ORDER BY created_at ASC LIMIT 1;
+SELECT DATE_FORMAT(created_at, '%M %D %Y') AS earliest_date FROM users ORDER BY created_at ASC LIMIT 1;
 
-SELECT DATE_FORMAT(MIN(created_at), '%M %D %Y') AS earliest_date FROM users LIMIT 1;
+SELECT DATE_FORMAT(MIN(created_at), '%M %D %Y') AS earliest_date FROM users;
 
 -- Find Email of the earliest user
 
