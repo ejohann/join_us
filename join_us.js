@@ -4,9 +4,9 @@ var mysql = require('mysql');
 var config = require('./config.js');
 var connection = mysql.createConnection(config.databaseOptions);
 
-
 var data = [];
-for(var i = 0; i < 5; i++)
+var users = 5; // change this value to the amount of users to be created
+for(var i = 0; i < users; i++)
   {
     data.push([
     faker.internet.email(), 
