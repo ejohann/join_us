@@ -37,6 +37,8 @@ SELECT MONTHNAME(created_at) AS month, COUNT(*) FROM users GROUP BY month ORDER 
 
  SELECT COUNT(*) AS yahoo_users FROM users WHERE email LIKE '%@yahoo.com';
 
+ SELECT COUNT(*) FROM users WHERE SUBSTR(email FROM -9 FOR 9) = 'yahoo.com';
+
 
 -- CHALLENGE 5 - count of number of users with each email host 
 
